@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Vercel deployment optimizations
+  serverExternalPackages: ['mongoose'],
+  
+  // Image optimization for production
   images: {
     remotePatterns: [
       {
@@ -29,7 +33,13 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+    // Optimize for Vercel
+    formats: ['image/webp', 'image/avif'],
   },
+  
+  // Production optimizations
+  poweredByHeader: false,
+  compress: true,
 };
 
 export default nextConfig;
